@@ -1,4 +1,4 @@
-#Практика 2
+# Практика 2
 ## 1. SSH-ключ
 ![01-ssh-keygen](screenshots/01-ssh-keygen.png)
 ## 2. VPS и файрвол

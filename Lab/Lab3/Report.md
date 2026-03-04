@@ -11,9 +11,9 @@
 ![04-putty](Screenshots/03-curl.png)
 ## 4. Директория и права
 ### 04-permissions
-ДО:
+### ДО:
 ![04-permissions](Screenshots/04-permissions(1).png)
-ПОСЛЕ:
+### ПОСЛЕ:
 ![04-permissions](Screenshots/04-permissions(2).png)
 ## 5. Конфигурация Nginx
 

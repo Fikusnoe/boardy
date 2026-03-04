@@ -42,6 +42,6 @@ index index.html index.htm index.nginx-debian.html;
 10. dig +trace
 ### 09-dig-trace
 ![09-dig-trace](Screenshots/09-dig-trace.png)
-##11. Сайт по домену
+## 11. Сайт по домену
 ### 10-browser-domain
 ![10-browser-domain](Screenshots/10-browser-domain.png)

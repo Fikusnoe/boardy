@@ -11,7 +11,8 @@
 ![04-putty](Screenshots/03-curl.png)
 ## 4. Директория и права
 ### 04-permissions
-![04-permissions](Screenshots/04-permissions.png)
+![04-permissions](Screenshots/04-permissions(1).png)
+![04-permissions](Screenshots/04-permissions(2).png)
 ## 5. Конфигурация Nginx
 
 listen 80 default_server;

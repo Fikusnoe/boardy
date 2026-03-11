@@ -57,3 +57,6 @@ Get возвращает и заголовки и тело ответа, а Head
 ## 14. Фильтрация логов
 ### 14-log-stats
 ![14-log-stats](Screenshots/14-log-stats.png)
+## 14. Фильтрация логов
+### 14-pull-request
+![15-pull-request](Screenshots/15-pull-request.png)

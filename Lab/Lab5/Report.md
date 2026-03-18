@@ -57,4 +57,5 @@ HSTS это защитная механика, которая заставляе
 ## 13. Автообновление
 ### 14-renew
 ![14-renew](Screenshots/14-renew.png)
-
+### 15-pull-request
+![15-pull-request](Screenshots/15-pull-request.png)

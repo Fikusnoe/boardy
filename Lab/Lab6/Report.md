@@ -40,6 +40,7 @@ fastcgi_param SCRIPT_FILENAME /var/www/boardy$fastcgi_script_name;<br>
 ### 10-chain
 ![10-chain](Screenshots/scheme.png)
 
+## 10. Теоретические вопросы
 1. Что такое CGI и какую проблему он решил в 1993 году?
 CGI (Common Gateway Interface) — это стандарт, позволяющий веб-серверу запускать внешние программы (скрипты) и передавать им данные HTTP-запроса. В 1993 году он решил проблему создания динамических веб-страниц, так как до CGI серверы могли отдавать только статический HTML-контент.<br>
 2. Как CGI-скрипт получает данные POST-запроса?
@@ -52,3 +53,5 @@ fastcgi_pass проксирует запросы к FastCGI-приложения
 5. Зачем нужен fcgiwrap, если Apache запускает CGI напрямую?
 fcgiwrap нужен для Nginx, потому что Nginx не умеет напрямую запускать CGI-скрипты (в отличие от Apache), и fcgiwrap выступает в роли посредника, принимая FastCGI-запросы от Nginx и запуская CGI-скрипты как отдельные процессы.<br>
 
+### 09-pull-request.png
+![09-pull-request.png](Screenshots/09-pull-request.png)

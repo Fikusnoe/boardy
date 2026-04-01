@@ -8,7 +8,7 @@
 ![02-test-cgi.png](Screenshots/02-test-cgi.png)
 ## 3. Конфигурация Nginx
 ### 03-nginx-cgi.png
-![03-nginx-cgi.png](Screenshots/03-nginx-cgi.png)
+![03-nginx-cgi.png](Screenshots/03-nginx-cgi.png)\
 fastcgi_pass unix:/var/run/fcgiwrap.socket;<br>
 Указывает, куда передавать запрос для обработки через FastCGI протокол.<br>
 include fastcgi_params;<br>

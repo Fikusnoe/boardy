@@ -62,7 +62,7 @@ Prepared Statement разделяет SQL-код и данные. Данные �
 ![13-db-php.png](Screenshots/13-db-php.png)
 ## 12. submit.php через MySQL
 ### 14-submit.png
-![14-submit.png](Screenshots/14-submit.png)\
+![14-submit.png](Screenshots/14-submit.png)
 ### 15-submit-pma.png
 ![15-submit-pma.png](Screenshots/15-submit-pma.png)
 ## 13. messages.php через MySQL

@@ -39,14 +39,14 @@ InnoDB по причине ACID-совместимости и обработки
 ![08-data-pma.png](Screenshots/08-data-pma.png)
 ## 7. SELECT + JOIN
 ### 09-join.png 
-![09-join.png ](Screenshots/09-join.png )\
+![09-join.png ](Screenshots/09-join.png)\
 зачем JOIN?<br>
 JOIN позволяет сопоставить строки из одной таблицы со строками другой таблицы по заданному правилу сопоставления, получив на выходе новую таблицу.<br>
 Как получить имя автора без него?<br>
 Можно написать подзапрос в скобках.<br>
 ## 8. Foreign Key — защита целостности
 ### 10-fk-error.png
-![10-fk-error.png](10-fk-error.png)
+![10-fk-error.png](Screenshots/10-fk-error.png)
 ## 9. CASCADE
 ### 11-cascade.png
 ![11-cascade.png](Screenshots/11-cascade.png)

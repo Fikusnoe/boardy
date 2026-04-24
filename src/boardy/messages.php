@@ -1,35 +1,42 @@
 <?php
-$file = '/var/www/boardy/data/messages.txt';
-$messages = file_exists($file) ? file($file, FILE_IGNORE_NEW_LINES) : [];
-?>
-<!DOCTYPE html>
-<html lang="ru">
-<head><meta charset="utf-8"><title>Boardy — Сообщения</title>
-<link rel="stylesheet" href="/css/style.css"></head>
-<body>
-<header><h1><a href="/">Boardy</a></h1></header>
-<main>
-  <h2>Все сообщения</h2>
-  <?php if (empty($messages)): ?>
-    <p>Сообщений пока нет.</p>
-  <?php else: ?>
-    <table border="1" cellpadding="8"
-           style="border-collapse:collapse;width:100%">
-    <tr><th>Дата</th><th>Имя</th><th>Сообщение</th></tr>
-    <?php foreach ($messages as $msg):
-      $parts = explode('|', $msg);
-      if (count($parts) >= 3): ?>
-      <tr>
-        <td><?= htmlspecialchars($parts[0]) ?></td>
-        <td><?= htmlspecialchars($parts[1]) ?></td>
-        <td><?= htmlspecialchars($parts[2]) ?></td>
-      </tr>
-    <?php endif; endforeach; ?>
-    </table>
-  <?php endif; ?>
-  <p style="margin-top:20px">
-    <a href="/feedback.html">Написать</a> |
-    <a href="/">На главную</a></p>
-</main>
-</body></html>
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+session_start();
+require_once 'db.php';
 
+$stmt = $pdo->query('
+    SELECT p.id, p.body, p.created_at,
+           u.name AS author_name
+    FROM posts p
+    JOIN users u ON p.author_id = u.id
+    ORDER BY p.created_at DESC
+');
+$posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+<?php include __DIR__ . '/partials/head.php'; ?>
+<?php include __DIR__ . '/partials/nav.php'; ?>
+
+<main class="post-list">
+    <h2>Все посты</h2>
+
+    <?php if (empty($posts)): ?>
+        <p class="no-posts">Сообщений пока нет.</p>
+    <?php else: ?>
+        <div class="posts-container">
+            <?php foreach ($posts as $post): ?>
+                <div class="post-card">
+                    <div class="post-header">
+                        <span class="post-author"><?= htmlspecialchars($post['author_name']) ?></span>
+                        <span class="post-date"><?= htmlspecialchars($post['created_at']) ?></span>
+                    </div>
+                    <div class="post-body">
+                        <?= nl2br(htmlspecialchars($post['body']))  ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+</main>
+
+<?php include __DIR__ . '/partials/foot.php'; ?>

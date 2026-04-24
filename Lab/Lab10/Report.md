@@ -16,11 +16,11 @@ password_hash задан через Bcrypt. Одна такая строка п�
 Меню одно на весь сайт, незачем повторять его в коде каждой страницы, легче добавлять с помощью include.<br>
 Что изменится если добавить новую ссылку — например, «Избранное»?<br>
 Она добавиться сразу на всём сайте, на всех страницах, это еще один из плюсов выделения меню в отдельный файл.<br>
-## 3. POST — создать комментарий
-### 04-update.png
-![04-update.png](Screenshots/04-update.png)
-### 05-delete.png
-![05-delete.png](Screenshots/05-delete.png)
+## 3. Вёрстка форм по макетам
+### 04-register-layout.png
+![04-register-layout.png](Screenshots/04-register-layout.png)
+### 05-login-layout.png
+![05-login-layout.png](Screenshots/05-login-layout.png)
 
 
 # Часть B. Регистрация и логин

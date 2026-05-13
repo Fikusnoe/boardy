@@ -94,7 +94,7 @@ Cравните Policy с тем, как авторизация была реа�
 ![23-after-register.png](Screenshots/23-after-register.png)
 ## 19. GitHub OAuth-приложение
 ### 24-github-app.png
-![24-github-app.png](Screenshots/24-github-app.pngg)
+![24-github-app.png](Screenshots/24-github-app.png)
 ## 20. Socialite
 ### 25-login-with-github.png
 ![25-login-with-github.png](Screenshots/25-login-with-github.png)

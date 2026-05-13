@@ -1,87 +1,128 @@
-# Практика 11: JWT для API и OAuth через GitHub
-# Часть A. JWT для API
-## 1. auth.py
-### 01-no-token.png
-![01-no-token.png](Screenshots/01-no-token.png)\
-Что означает «Bearer» в заголовке Authorization?<br>
-Bearer (предъявитель) - это схема авторизации, которая говорит серверу: "Токен в этом запросе принадлежит тому, кто его предъявляет".<br>
-Почему не просто «Authorization: eyJ...»?<br>
-Без указания схемы сервер не поймёт, как интерпретировать переданную строку, так как существуют еще схемы.<br>
-## 2. /api/me.php
-### 02-me-php.png
-![02-me-php.png](Screenshots/02-me-php.png)\
-Почему me.php использует session_start(), а не принимает логин/пароль?<br>
-Пользователь уже залогинился, сессия существует. me.php - это не вход, а получение JWT по уже существующей сессии,<br>
-Какую роль играет кука PHPSESSID в этом запросе?<br>
-Кука - это ключ от сессии. Она связывает текущий браузер с файлом сессии на сервере, где хранятся данные о пользователе.<br>
-## 3. React получает JWT
-### 03-console-jwt.png
-![03-console-jwt.png](Screenshots/03-console-jwt.png)
-## 4. Регистрация
-### 04-bearer-header.png
-![04-bearer-header.png](Screenshots/04-bearer-header.png)
+# Практика 12: Laravel: переезд на фреймворк (MVC + Breeze + Socialite)
+# Часть A. Установка и переключение домена
+## 1. Composer и PHP-расширения
+### 01-composer-php.png
+![01-composer-php.png](Screenshots/01-composer-php.png)
+## 2. Переезд папок
+### 02-folders.png
+![02-folders.png](Screenshots/02-folders.png)
+### 03-laravel-version.png
+![03-laravel-version.png](Screenshots/03-laravel-version.png)
+## 3. Структура Laravel
+Назначения папок:<br>
+app/ - ядро приложения с контроллерами, моделями и бизнес-логикой.<br>
+routes/ - хранилище всех маршрутов.<br>
+resources/views/ - шаблоны HTML.<br>
+database/ - инструменты для управление базой данных и её структурой.<br>
+public/ - корневая директория, содержащая точку входа и публичные ресурсы.<br>
+
+Почему document_root nginx должен указывать на public/, а не на /var/www/boardy/?<br>
+Указание на public/ гарантирует, что index.php будет единственной точкой входа.<br>
+Что плохого случится, если указать на корень?<br>
+Если указать на корень, любой пользователь может напрямую обратится к файлам, в том числе служебным, что приведёт к утечке чувствительной информации, по типу паролей, секретов и т.п.<br>
+## 4. Nginx-конфиг
+### 04-nginx-config.png
+![04-nginx-config.png](Screenshots/04-nginx-config.png)
 ### 05-comment-created.png
-![05-comment-created.png](Screenshots/05-comment-created.png)
-## 5. jwt.io
-### 06-jwt-io.png
-![06-jwt-io.png](Screenshots/06-jwt-io.png)
-Payload зашифрован или закодирован?<br>
-Закодирован.<br>
-Что увидит злоумышленник, перехвативший токен?<br>
-Если декодировать, то можно будет увидеть user_id, user_name и exp, информацию, которая лежит в JWT.<br> 
-Почему это не проблема?<br>
-Срок действия токена быстро истекает. Имя и ID юзера это публичные данные, их и так все видят. По хорошему в JWT не должно быть чувствительной информации. Изменить их нельзя, иначе сломается подпись.<br>
-## 6. Истёкший токен
-### 07-expired.png
-![07-expired.png](Screenshots/07-expired.png)
-## 7. Невалидный токен
-### 08-invalid.png
-![08-invalid.png](Screenshots/08-invalid.png)
+![05-laravel-welcome.png](Screenshots/05-laravel-welcome.png)\
+Что делает try_files $uri $uri/ /index.php?$query_string?<br>
+Это обработка запроса пользователя nginx'ом: сначала проверяется наличие файла с именем $uri, затем проверяется папка с таким именем $uri/ , затем запрос отдаётся фреймворку через /index.php?$query_string на index.php<br>
+Что произойдёт без этой строки при заходе на /posts/3?<br>
+Без этой проверки nginx вернёт 404 Not found<br>
 
 # Часть B. OAuth через GitHub
+## 5. Создание БД boardy_main
+### 06-databases.png
+![06-databases.png](Screenshots/06-databases.png)\
+Зачем мы создаём новую БД, а не подгоняем старую под Laravel?<br>
+У старой БД схема под чистый PHP, подгонять под Laravel будет дороже, чем создавать с нуля.<br>
+Что в схеме старой БД мешает?<br>
+password_hash вместо password, username вместо name<br>
+## 6. Подключение Laravel к БД
+### 07-tinker-pdo.png
+![07-tinker-pdo.png](Screenshots/07-tinker-pdo.png)
+## 7. Миграции posts и comments
+### 08-migrate-status.png
+![08-migrate-status.png](Screenshots/08-migrate-status.png)
+### 09-show-tables.png
+![09-show-tables.png](Screenshots/09-show-tables.png)
 ## 8. OAuth App на GitHub
-### 09-github-app.png
-![09-github-app.png](Screenshots/09-github-app.png)
+### 10-model-relations.png
+![10-model-relations.png](Screenshots/10-model-relations.png
 ## 9. Столбец github_id
-### 10-describe.png
-![10-describe.png](Screenshots/10-describe.png)
-## 10. Кнопка «Войти через GitHub»
-### 11-login-button.png
-![11-login-button.png](Screenshots/11-login-button.png)\
-Добавил на login.php
-## 11. OAuth flow
-### 12-github-authorize.png
-![12-github-authorize.png](Screenshots/12-github-authorize.png)
-### 13-oauth-logged.png
-![13-oauth-logged.png](Screenshots/13-oauth-logged.png)
-## 12. Файл сессии на сервере
-### 14-github-user.png
-![14-github-user.png](Screenshots/14-github-user.png)\
-Почему ищем по github_id, а не по email?<br>
-Потому что входим через github<br>
-## 13. OAuth → JWT → API
-### 15-oauth-comment.png
-![15-oauth-comment.png](Screenshots/15-oauth-comment.png)
-### Полный flow
-![scheme.png](Screenshots/scheme.png)
-## 14. Параметр state
-Что такое state в OAuth?<br>
-state — это случайная строка, которую клиент-сайт генерирует перед редиректом на другой сайт и сохраняет в сессии. При возврате пользователя Второй сайт передаёт тот же state, и клиент-сайт сверяет его с сохранённым в сессии.<br>
-Опишите сценарий CSRF-атаки без state (минимум 5 шагов).<br>
-1) Обычный пользователь входит в аккаунт на сайте, где нет защиты от CSRF, получает куку сессии.<br>
-2) Мошенник формирует свой сайт с кодом, который выполняется при запуске страницы, например POST на Незащищенный сайт.<br>
-3) Мошенник убеждает пользователя зайти на свой сайт с Вредоносным кодом.<br>
-4) Обычный пользователь заходит, код автоматически срабатывает.<br>
-5) Сайт без защиты проверяет куку, она подходит, так как пользователь авторизован<br>
+### 11-seed-counts.png
+![11-seed-counts.png](Screenshots/11-seed-counts.png)
 
 # Часть C. Анализ
-## 15. Три способа входа
-### 16-three-users.png
-![16-three-users.png](Screenshots/16-three-users.png)
-## 16. Сравнение механизмов
-### table.png
-![table.png](Screenshots/table.png)
-## 17. Баги и пакеты
-1) secret_key в коде: сейчас секрет хранится прямо в коде, файлы можно легко залить в гитхаб, где любой может увидеть секрет и воспользоваться им, например, создавая валидные JWT от любого имени. Решает: Passport.<br>
-2) Нет отзыва токенов: Если JWT будет украден, злоумышленник сможет использовать его всё время действия JWT токена (час в boardy). Решает: Passport.<br>
-3) CSRF вручную: если забыть проверить - дыра в безопасности, данные пользователей могут легко утекать с помощью CSRF атаки. Решает: Socialite.<br>
+## 10. Маршруты
+### 12-route-list.png 
+![12-route-list.png ](Screenshots/12-route-list.png )
+## 11. Лента постов
+### 13-oauth-logged.png
+![13-posts-index.png](Screenshots/13-posts-index.png)
+## 12. Страница поста с комментариями
+### 14-post-show.png
+![14-post-show.png](Screenshots/14-post-show.png)\
+## 13. Создание поста
+### 15-post-create.png
+![15-post-create.png](Screenshots/15-post-create.png)
+### 16-post-after-create.png
+![16-post-after-create.png](Screenshots/16-post-after-create.png)
+## 14. Policy и редактирование
+### 17-edit-own.png
+![17-edit-own.png](Screenshots/17-edit-own.png)
+### 18-edit-foreign-403.png
+![18-edit-foreign-403.png](Screenshots/18-edit-foreign-403.png)\
+Cравните Policy с тем, как авторизация была реализована в Lab10–11 (на чистом PHP).<br>
+Сколько строк кода ушло на тот же эффект?<br>
+На весь crud + Policy ушло около 30 строк во всём проекте, когда как только повторение проверки авторизации и session_start() в файлах обычного PHP в легаси проекте занимало более 30.<br>
+## 15. Удаление поста
+### 19-post-deleted.png
+![19-post-deleted.png](Screenshots/19-post-deleted.png)
+## 16. Комментарий через Blade
+### 20-comment-created.png
+![20-comment-created.png](Screenshots/20-comment-created.png)
+
+# Часть D. Breeze + Socialite
+## 17. Установка Breeze
+### 21-register.png
+![21-register.png](Screenshots/21-register.png)
+### 22-login.png
+![22-login.png](Screenshots/22-login.png)
+## 18. Регистрация и вход
+### 23-after-register.png
+![23-after-register.png](Screenshots/23-after-register.png)
+## 19. GitHub OAuth-приложение
+### 24-github-app.png
+![24-github-app.png](Screenshots/24-github-app.pngg)
+## 20. Socialite
+### 25-login-with-github.png
+![25-login-with-github.png](Screenshots/25-login-with-github.png)
+## 21. Полный OAuth flow
+### 25-login-with-github.png
+![25-login-with-github.png](Screenshots/26-github-authorize.png)
+### 25-login-with-github.png
+![25-login-with-github.png](Screenshots/27-after-github-login.png)
+### 25-login-with-github.png
+![25-login-with-github.png](Screenshots/28-mysql-github-id.png)\
+Сравните количество строк кода Lab11 (ручной OAuth на чистом PHP) и Lab12 (Socialite). Что сократилось и за счёт чего?<br>
+В Lab11 вручную реализован весь OAuth-поток. На это ушло около 70 строк кода. В Lab12 пакет Socialite скрыл все эти шаги: достаточно двух методов - redirect() и user() — и проверка state, HTTP-запросы, остальное внутри Socialite. В результате код сократился до 15 строк.<br>
+
+# Часть E. Архитектурные вопросы
+## 22. Что осталось от прошлых практик
+У вас на VPS лежат /var/www/boardy-legacy/ (старый PHP) и БД boardy. Зачем мы их не удалили? <br>
+Чтобы сравнить ручную реализацию функций веб-приложения и реализацию с фреймворком.<br>
+Что произойдёт, если попробовать открыть https://fgsfds.ai-info.ru/login.php (старый PHP-логин)?<br>
+Ничего, сейчас nginx смотрит только в public - точку входа в приложение, в архитектуре Laravel такого файла нет.<br>
+## 23. FastAPI и React
+FastAPI продолжает работать на api.fgsfds.ai-info.ru, а React-файлы лежат в Lab9–11. Но в Laravel-проекте мы их не используем. Почему сейчас не используем — что мешает интегрировать?<br>
+FastAPI не умеет проверять пользователей как Laravel, вместе с этим не работает React.<br>
+Где они нам пригодятся в Lab13?<br>
+Перепишем FastAPI под BFF: валидация Bearer-токенов от Passport (RS256), проксирование запросов в Laravel.<br>
+Вернём React на страницу поста — комменты будут через FastAPI с Bearer<br>
+## 24. Реалтайм
+Сейчас комментарии появляются только после F5. Какое архитектурное решение нам нужно, чтобы один пользователь видел новый комментарий другого без перезагрузки?<br>
+WebSocket, который поддерживает постоянные соединения и отправляет события всем подключённым клиентам.<br>
+Какие два сервера-кандидата для этого решения и почему именно они?<br>
+Laravel Reverb и FastAPI + WebSocket.<br>
+Laravel - потому что основной сайт на нём, нативно. FastApi, потому что он уже работает с комментариями и можно вынести логику отдельно от основного сайта.<br>

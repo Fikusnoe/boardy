@@ -99,12 +99,12 @@ Cравните Policy с тем, как авторизация была реа�
 ### 25-login-with-github.png
 ![25-login-with-github.png](Screenshots/25-login-with-github.png)
 ## 21. Полный OAuth flow
-### 25-login-with-github.png
-![25-login-with-github.png](Screenshots/26-github-authorize.png)
-### 25-login-with-github.png
-![25-login-with-github.png](Screenshots/27-after-github-login.png)
-### 25-login-with-github.png
-![25-login-with-github.png](Screenshots/28-mysql-github-id.png)\
+### 26-github-authorize.png
+![26-github-authorize.png](Screenshots/26-github-authorize.png)
+### 27-after-github-login.png
+![27-after-github-login.png](Screenshots/27-after-github-login.png)
+### 28-mysql-github-id.png
+![28-mysql-github-id.png](Screenshots/28-mysql-github-id.png)\
 Сравните количество строк кода Lab11 (ручной OAuth на чистом PHP) и Lab12 (Socialite). Что сократилось и за счёт чего?<br>
 В Lab11 вручную реализован весь OAuth-поток. На это ушло около 70 строк кода. В Lab12 пакет Socialite скрыл все эти шаги: достаточно двух методов - redirect() и user() — и проверка state, HTTP-запросы, остальное внутри Socialite. В результате код сократился до 15 строк.<br>
 

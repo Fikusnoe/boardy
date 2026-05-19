@@ -17,7 +17,8 @@ Cписок в памяти, потому что WebSocket соединения 
 Nginx просто закрывает эту проблему: в конфигурации запрещены запросы ото всех, кроме localhost (127.0.0.1)<br>
 ## 3. Два клиента
 ### 03-two-clients.png
-![03-two-clients.png](Screenshots/03-two-clients.png)\
+![03-two-clients.png](Screenshots/03-two-clients(1).png)
+![03-two-clients.png](Screenshots/03-two-clients(2).png)\
 Что произойдёт если один из клиентов отключился, а broadcast уже начался?<br>
 Отключившийся пользователь не получит сообщение, остальные - получат.<br>
 Где в коде это обрабатывается?<br>

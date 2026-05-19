@@ -57,16 +57,16 @@ ws:// подходит для локалки потому что весь тра
 ### 08-devtools-frame.png
 ![08-devtools-frame.png](Screenshots/08-devtools-frame.png)
 ## 8. XSS
-### 09-show-tables.png
-![09-show-tables.png](Screenshots/09-show-tables.png)\
+### 09-xss.png
+![09-xss.png](Screenshots/09-xss.png)\
 Что делает функция escapeHtml()?<br>
 Экранирует символы для безопасного отображения текста.<br>
 Что случится если вставить данные напрямую в innerHTML без экранирования?<br>
 Без экранирования любой может написать скрипт и при загрузке такого скрипта в посте, скрипт выполнится, чем могут воспользоваться хакеры.<br>
-
 ## 9. Переподключение
 ### 10-reconnect.png
 ![10-reconnect.png](Screenshots/10-reconnect.png
+# Часть D. Nginx
 ## 10. Маршруты
 ### 11-nginx-ws.png
 ![11-nginx-ws.png](Screenshots/11-nginx-ws.png)\

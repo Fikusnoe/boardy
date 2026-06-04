@@ -114,6 +114,7 @@ Redis создаёт каналы Sub и Pub. Сервисы остаются н
 ## 17. FastAPI subscriber на new_post
 ### 21-subscriber-running.png
 ![21-subscriber-running.png](Screenshots/21-subscriber-running.png)
+### 22-broadcast-flow.png
 ![22-broadcast-flow.png](Screenshots/22-broadcast-flow.png)
 ## 18. User observer и user.renamed
 ### 23-user-renamed.png

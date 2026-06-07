@@ -115,9 +115,9 @@ MySQL может стартовать позже Laravel, но внутри се
 compose exec выполняет команду в уже запущенном контейнере, когда как docker compose run запускает отдельный контейнер и удаляет его после завершения команды.<br>
 ## 16. Приложение работает
 ### 19-app-running.png
-![19-app-running.png](Screenshots/19-app-running.png)\
+![19-app-running.png](Screenshots/19-app-running.png)
 ### 20-comment-works.png
-![20-comment-works.png](Screenshots/20-comment-works.png)\
+![20-comment-works.png](Screenshots/20-comment-works.png)
 ## 17. Реалтайм работает
 ### 21-realtime-posts.png
 ![21-realtime-posts.png](Screenshots/21-realtime-posts.png)

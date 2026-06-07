@@ -35,7 +35,7 @@
 
 <script>
 @if(app()->environment('production'))
-const wsUrl = 'wss://api.{{ config("app.fastapi_domain") }}/ws'
+const wsUrl = 'ws://{{ config("app.fastapi_domain") }}/ws'
 @else
 const wsUrl = 'ws://localhost:8000/ws'
 @endif

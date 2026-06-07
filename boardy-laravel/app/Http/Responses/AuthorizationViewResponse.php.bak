@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Responses;
+
+use Laravel\Passport\Contracts\AuthorizationViewResponse as Contract;
+
+class AuthorizationViewResponse implements Contract
+{
+    public function toResponse($request)
+    {
+        return response()->view('oauth.authorize', [
+            'client' => $request->getClient(),
+            'user' => $request->user(),
+            'request' => $request,
+            'scopes' => $request->getScopes(),
+        ]);
+    }
+}

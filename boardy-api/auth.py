@@ -1,7 +1,7 @@
 import jwt
 from fastapi import Header, HTTPException
 
-PUBLIC_KEY = open('/opt/boardy-api/oauth-public.key').read()
+PUBLIC_KEY = open('/laravel-storage/oauth-public.key').read()
  
 async def get_current_user(authorization: str = Header(None)):
     if not authorization or not authorization.startswith('Bearer '):

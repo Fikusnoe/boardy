@@ -1,0 +1,35 @@
+# Секреты и конфиги окружения
+.env
+!.env.example
+
+# Docker volumes (если они вдруг создадутся как папки)
+mysql_data/
+redis_data/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+
+# Laravel
+vendor/
+node_modules/
+storage/logs/*.log
+.env
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
